@@ -1,15 +1,15 @@
 package com.example.postservice;
 
-public class PostDto {
+public class PostResponseDto {
 
     private Long id;
     private String content;
     private String authorName;
 
-    public PostDto() {
+    public PostResponseDto() {
     }
 
-    public PostDto(Long id, String content, String authorName) {
+    public PostResponseDto(Long id, String content, String authorName) {
         this.id = id;
         this.content = content;
         this.authorName = authorName;

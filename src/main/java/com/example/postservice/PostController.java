@@ -18,14 +18,14 @@ public class PostController {
     }
 
     @GetMapping
-    public List<PostDto> getPosts() {
+    public List<PostResponseDto> getPosts() {
         return List.of(
-                new PostDto(1L, "Hello World", userClient.getUserName(1L)),
-                new PostDto(2L, "Second Post", userClient.getUserName(2L)));
+                new PostResponseDto(1L, "Hello World", userClient.getUserName(1L)),
+                new PostResponseDto(2L, "Second Post", userClient.getUserName(2L)));
     }
 
     @GetMapping("/{id}")
-    public PostDto getPost(@PathVariable Long id) {
-        return new PostDto(id, id == 1 ? "Hello World" : "Second Post", userClient.getUserName(id));
+    public PostResponseDto getPost(@PathVariable Long id) {
+        return new PostResponseDto(id, id == 1 ? "Hello World" : "Second Post", userClient.getUserName(id));
     }
 }
