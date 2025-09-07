@@ -18,12 +18,27 @@ Post Service는 사용자 게시물을 관리하는 마이크로서비스입니�
 
 ---
 
+### PostResponseDto
+- **클래스 경로:** `com.example.postservice.PostResponseDto`
+- **역할:** 게시물 데이터를 클라이언트에 반환하기 위한 DTO.
+- **구성 필드:**
+    - 게시물 ID, 제목, 내용, 작성자 정보 등을 포함합니다.
+
+---
+
 ### UserClient
 - **클래스 경로:** `com.example.postservice.UserClient`
 - **역할:** User Service와 통신하여 사용자 정보를 가져옵니다.
 - User Service의 기본 URL(`userservice.base-url`)은 `application.yml`에서 설정됩니다.
 - **주요 메서드:**
     - `getUserName(Long userId)`: 특정 User ID로 User Service를 호출하여 사용자 이름을 가져옵니다.
+
+---
+
+### HttpClientConfig
+- **클래스 경로:** `com.example.postservice.HttpClientConfig`
+- **역할:** 외부 서비스와의 HTTP 통신을 위한 설정을 관리합니다.
+- WebClient 또는 RestTemplate 구성을 제공하여 User Service와의 안정적인 통신을 보장합니다.
 
 ---
 
@@ -52,29 +67,29 @@ Post Service는 사용자 게시물을 관리하는 마이크로서비스입니�
 
 ## API 테스트
 
-API를 간편하게 테스트할 수 있는 `.http` 파일이 제공됩니다. 
+API를 간편하게 테스트할 수 있는 `.http` 파일이 제공됩니다.
 
 - **파일 경로:** `ApiEndpoints.http`
 
 ### 예제 요청
 
 1. **게시물 목록 조회**
-   ```http request
-   GET http://localhost:8080/posts
+```
+GET http://localhost:8080/posts
    Accept: application/json
-   ```
+```
 
 2. **특정 게시물 조회 (ID: 1)**
-   ```http request
-   GET http://localhost:8080/posts/1
+```
+GET http://localhost:8080/posts/1
    Accept: application/json
-   ```
+```
 
 3. **특정 게시물 조회 (ID: 2)**
-   ```http request
-   GET http://localhost:8080/posts/2
+```
+GET http://localhost:8080/posts/2
    Accept: application/json
-   ```
+```
 
 **실행 방법:**  
 `.http` 파일에서 원하는 요청 위에 커서를 두고 **실행 버튼**을 클릭하여 테스트를 진행합니다.
@@ -88,14 +103,14 @@ API를 간편하게 테스트할 수 있는 `.http` 파일이 제공됩니다.
 ### 도커 빌드 및 실행
 
 1. **이미지 빌드**
-   ```bash
-   docker build -t postservice .
-   ```
+```shell script
+docker build -t postservice .
+```
 
 2. **도커 컨테이너 실행**
-   ```bash
-   docker run -p 8080:8080 postservice
-   ```
+```shell script
+docker run -p 8080:8080 postservice
+```
 
 **Dockerfile 상세설명**
 
@@ -145,4 +160,3 @@ services:
     3. 변경 사항을 커밋합니다. (`git commit -m 'feat: 기능 추가 설명'`)
     4. 브랜치를 푸시합니다. (`git push origin feature/기능이름`)
     5. Pull Request를 생성합니다.
-
